@@ -1,0 +1,1 @@
+Rho GTPase-activating protein 1 is an enzyme that in humans is encoded by the ARHGAP1 gene. == Interactions == ARHGAP1 has been shown to interact with: * BNIP2 * CDC42, and * RHOA. == References == ==External links== * == Further reading == * * * * * * * * * * * * * * * * * *

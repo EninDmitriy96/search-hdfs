@@ -1,0 +1,1 @@
+X.32 is an old ITU-T standard published in 1984 for connecting to an X.25 network by dial-up. It defines how the network identifies the terminal for billing and security purposes. ==Further reading== * * ==External links== *ITU-T Recommendation X.32 Category:ITU-T recommendations Category:ITU-T X Series Recommendations Category:X.25

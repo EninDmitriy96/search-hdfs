@@ -10,19 +10,20 @@ for line in sys.stdin:
         if not line:
             continue
         
-        file_path = os.environ.get('mapreduce_map_input_file') or os.environ.get('map_input_file')
+        filepath = os.environ.get('map_input_file') or os.environ.get('mapreduce_map_input_file')
         
         doc_id = "unknown"
         doc_title = "unknown"
         
-        if file_path:
-            filename = os.path.basename(file_path)
+        if filepath:
+            filename = os.path.basename(filepath)
             
-            if '_A_' in filename:
-                parts = filename.split('_A_')
+            if '_' in filename:
+                parts = filename.split('_')
                 if len(parts) >= 2:
                     doc_id = parts[0]
-                    doc_title = parts[1].replace('.txt', '')
+                    doc_title = '_'.join(parts[1:]).replace('.txt', '')
+                    print(f"DEBUG: Parsed filename={filename}, doc_id={doc_id}, doc_title={doc_title}", file=sys.stderr)
         
         words = re.findall(r'\b\w+\b', line.lower())
         
@@ -31,5 +32,5 @@ for line in sys.stdin:
                 print(f"{word}\t{doc_id}\t{doc_title}\t1")
     
     except Exception as e:
-        print(f"Error processing line: {str(e)}", file=sys.stderr)
+        print(f"ERROR in mapper: {str(e)}, file: {filepath if 'filepath' in locals() else 'unknown'}", file=sys.stderr)
         continue

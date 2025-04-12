@@ -113,13 +113,13 @@ try:
                 term_count_count = 0
     
     # Execute any remaining batches
-    if doc_count > 0:
+    if int(doc_count) > 0:
         session.execute(doc_batch)
     
-    if term_freq_count > 0:
+    if int(term_freq_count) > 0:
         session.execute(term_freq_batch)
         
-    if term_count_count > 0:
+    if int(term_count_count) > 0:
         session.execute(term_count_batch)
     
     print("Successfully loaded index data into Cassandra")
